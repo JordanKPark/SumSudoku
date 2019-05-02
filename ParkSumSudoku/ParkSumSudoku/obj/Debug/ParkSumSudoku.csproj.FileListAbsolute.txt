@@ -1,0 +1,38 @@
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.Form1.resources
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\obj\Debug\OrtizParkAssignment5.Properties.Resources.resources
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.Form1.aa.resources
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.csproj.GenerateResource.cache
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.csproj.CoreCompileInputs.cache
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\bin\Debug\OrtizParkAssignment5.exe.config
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\bin\Debug\OrtizParkAssignment5.exe
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\bin\Debug\OrtizParkAssignment5.pdb
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\bin\Debug\aa\OrtizParkAssignment5.resources.dll
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\obj\Debug\aa\OrtizParkAssignment5.resources.dll
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\obj\Debug\OrtizParkAssignment5.exe
+D:\CS473\a5Version2\OrtizPark_Assignment5-master\OrtizPark_Assignment5-master\OrtizParkAssignment5\OrtizParkAssignment5\obj\Debug\OrtizParkAssignment5.pdb
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.Form1.resources
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.Form1.aa.resources
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.csproj.GenerateResource.cache
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.csproj.CoreCompileInputs.cache
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\bin\Debug\ParkSumSudoku.exe.config
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\bin\Debug\ParkSumSudoku.exe
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\bin\Debug\ParkSumSudoku.pdb
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\bin\Debug\aa\ParkSumSudoku.resources.dll
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.csprojAssemblyReference.cache
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.Properties.Resources.resources
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\obj\Debug\aa\ParkSumSudoku.resources.dll
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.exe
+D:\CS473\ParkSumSudoku\OrtizParkAssignment5\obj\Debug\ParkSumSudoku.pdb
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\bin\Debug\ParkSumSudoku.exe.config
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\bin\Debug\ParkSumSudoku.exe
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\bin\Debug\ParkSumSudoku.pdb
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\bin\Debug\aa\ParkSumSudoku.resources.dll
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\obj\Debug\ParkSumSudoku.Form1.resources
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\obj\Debug\ParkSumSudoku.Properties.Resources.resources
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\obj\Debug\ParkSumSudoku.Form1.aa.resources
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\obj\Debug\ParkSumSudoku.csproj.GenerateResource.Cache
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\obj\Debug\ParkSumSudoku.csproj.CoreCompileInputs.cache
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\obj\Debug\aa\ParkSumSudoku.resources.dll
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\obj\Debug\ParkSumSudoku.exe
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\obj\Debug\ParkSumSudoku.pdb
+D:\Senior 2 2019\CSCI473\ParkSumSudoku\ParkSumSudoku\ParkSumSudoku\obj\Debug\ParkSumSudoku.csprojResolveAssemblyReference.cache
