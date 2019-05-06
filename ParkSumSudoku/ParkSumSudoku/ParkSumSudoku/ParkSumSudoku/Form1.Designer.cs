@@ -1,4 +1,4 @@
-﻿namespace ParkSumSudoku
+﻿namespace OrtizParkAssignment5
 {
     partial class Form1
     {
@@ -34,7 +34,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.diffButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.solveButton = new System.Windows.Forms.Button();
+            this.cheatButton = new System.Windows.Forms.Button();
+            this.checkButton = new System.Windows.Forms.Button();
             this.pauseButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.richtest = new System.Windows.Forms.RichTextBox();
@@ -46,8 +47,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.timerLabel = new System.Windows.Forms.Label();
             this.blockerPanel = new System.Windows.Forms.Panel();
-            this.WinPanel = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.currentVerticals = new System.Windows.Forms.Panel();
             this.currentHorizontals = new System.Windows.Forms.Panel();
@@ -63,11 +62,9 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.visTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.hintButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.blockerPanel.SuspendLayout();
-            this.WinPanel.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -107,14 +104,23 @@
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // solveButton
+            // cheatButton
             // 
-            this.solveButton.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.solveButton, "solveButton");
-            this.solveButton.ForeColor = System.Drawing.Color.Red;
-            this.solveButton.Name = "solveButton";
-            this.solveButton.UseVisualStyleBackColor = false;
-            this.solveButton.Click += new System.EventHandler(this.solveButton_Click_1);
+            this.cheatButton.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.cheatButton, "cheatButton");
+            this.cheatButton.ForeColor = System.Drawing.Color.Red;
+            this.cheatButton.Name = "cheatButton";
+            this.cheatButton.UseVisualStyleBackColor = false;
+            this.cheatButton.Click += new System.EventHandler(this.cheatButton_Click);
+            // 
+            // checkButton
+            // 
+            this.checkButton.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.checkButton, "checkButton");
+            this.checkButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.checkButton.Name = "checkButton";
+            this.checkButton.UseVisualStyleBackColor = false;
+            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
             // 
             // pauseButton
             // 
@@ -180,10 +186,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.hintButton);
             this.groupBox2.Controls.Add(this.saveButton);
             this.groupBox2.Controls.Add(this.pauseButton);
-            this.groupBox2.Controls.Add(this.solveButton);
+            this.groupBox2.Controls.Add(this.cheatButton);
+            this.groupBox2.Controls.Add(this.checkButton);
             this.groupBox2.Controls.Add(this.resetButton);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             resources.ApplyResources(this.groupBox2, "groupBox2");
@@ -197,24 +203,10 @@
             // 
             // blockerPanel
             // 
-            this.blockerPanel.Controls.Add(this.WinPanel);
             this.blockerPanel.Controls.Add(this.label2);
             resources.ApplyResources(this.blockerPanel, "blockerPanel");
             this.blockerPanel.Name = "blockerPanel";
             this.blockerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.blockerPanel_Paint);
-            // 
-            // WinPanel
-            // 
-            this.WinPanel.Controls.Add(this.label3);
-            resources.ApplyResources(this.WinPanel, "WinPanel");
-            this.WinPanel.ForeColor = System.Drawing.Color.Green;
-            this.WinPanel.Name = "WinPanel";
-            this.WinPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.WinPanel_Paint);
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
             // 
             // label2
             // 
@@ -310,21 +302,13 @@
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
             // 
-            // hintButton
-            // 
-            this.hintButton.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.hintButton, "hintButton");
-            this.hintButton.ForeColor = System.Drawing.Color.Red;
-            this.hintButton.Name = "hintButton";
-            this.hintButton.UseVisualStyleBackColor = false;
-            this.hintButton.Click += new System.EventHandler(this.hintButton_Click);
-            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.blockerPanel);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox2);
@@ -334,7 +318,6 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.boardPanel);
-            this.Controls.Add(this.blockerPanel);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Name = "Form1";
             this.groupBox1.ResumeLayout(false);
@@ -342,8 +325,6 @@
             this.groupBox2.ResumeLayout(false);
             this.blockerPanel.ResumeLayout(false);
             this.blockerPanel.PerformLayout();
-            this.WinPanel.ResumeLayout(false);
-            this.WinPanel.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -360,7 +341,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button diffButton;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button solveButton;
+        private System.Windows.Forms.Button cheatButton;
+        private System.Windows.Forms.Button checkButton;
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.RichTextBox richtest;
@@ -387,9 +369,6 @@
         private System.Windows.Forms.Label timerLabel;
         private System.Windows.Forms.Timer visTimer;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Panel WinPanel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button hintButton;
     }
 }
 

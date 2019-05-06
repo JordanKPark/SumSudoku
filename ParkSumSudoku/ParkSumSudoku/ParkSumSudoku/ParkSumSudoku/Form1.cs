@@ -1,5 +1,5 @@
-﻿// Jordan Park 
-// Z1816715       
+﻿// Jordan Park and Jose Ortiz
+// Z1816715  z1792042       
 // Assignment 5
 // 4/11/2019
 
@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ParkSumSudoku
+namespace OrtizParkAssignment5
 {
     public partial class Form1 : Form
     {
@@ -38,18 +38,13 @@ namespace ParkSumSudoku
         string difficultyChoice = "";
         List<Puzzle> puzzles = new List<Puzzle>();
         List<int> currentSumList = new List<int>();
-        List<int> currentSolvedList = new List<int>();
         List<int> currentSumResults = new List<int>();
         List<int> SumResults = new List<int>();
         List<string> currentIDS = new List<string>();
         List<Speed> currentSpeeds = new List<Speed>();
-        List<int> savedList = new List<int>();
         string tbs;
-        bool fileExists = false;
-        bool resetFile = false;
+        
         bool gameStart = false;
-        bool gameStart2 = false;
-        bool cheater = false;
 
         class Speed
         {
@@ -181,7 +176,7 @@ namespace ParkSumSudoku
 
             string[] levelOP = { "1", "2", "3" };
             levelselectCombo.DataSource = levelOP;
-            WinPanel.Visible = false;
+
         }
 
         
@@ -218,7 +213,9 @@ namespace ParkSumSudoku
                     else  //if (counter < dim * 2)
                     {
                         stuff2 += inFile.ReadLine();
-                    }                                    
+                    }
+                 
+                    
                 }
             }
 
@@ -378,46 +375,22 @@ namespace ParkSumSudoku
             BRcurrent.Controls.Clear();
             TRcurrent.Controls.Clear();
 
-
             List<int> uSolved = new List<int>();
             List<int> sumsList = new List<int>();
-            savedList = new List<int>();
-
-            string savedFile = "Saved/" + difficultyChoice + levelChoice + ".txt";
-            if (File.Exists(savedFile))
-            {
-                fileExists = true;
-                string stuff = "";
-
-                using (StreamReader inFile = new StreamReader(savedFile))
-                {
-                    while (!inFile.EndOfStream)
-                    {
-                        
-                            stuff += inFile.ReadLine(); 
-                    }
-                }
-               savedList = getList(stuff);
-            }
-
             foreach (Puzzle p in puzzles)
             {
                 if (p.pDifficulty == difficultyChoice && p.pLevel == levelChoice)
                 {
-                    uSolved = p.pUnsolved;                
+                    uSolved = p.pUnsolved;
                     sumsList = p.pSums;
                     SumResults = p.pSums;
-                    currentSolvedList = p.pSolved;
                 }
             }
 
             for (int i = 0; i < uSolved.Capacity; i++)
             { currentIDS.Add(""); };
 
-            if ((!fileExists) || resetFile == true)
-                currentSumList = uSolved;
-            else
-                currentSumList = savedList;
+            currentSumList = uSolved;
             currentSumResults = getListofSums(currentSumList);
             
 
@@ -603,11 +576,6 @@ namespace ParkSumSudoku
                     T.Name = (count.ToString());
                     T.KeyPress += T_KeyPress;
                     T.TextChanged += T_TextChanged;
-                    if(fileExists && !(resetFile))
-                    {
-                        if (savedList[count] != 0)
-                            T.Text = savedList[count].ToString();
-                    }
                     T.Cursor = Cursors.Default;
                     boardPanel.Controls.Add(T);
                     T.Location = new Point(x, y);
@@ -775,40 +743,22 @@ namespace ParkSumSudoku
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
-        {
-            if (gameStart2)
+        {          
+            
+            if (pauseCtrl % 2 == 0)
             {
-                if (pauseCtrl % 2 == 0)
-                {
-                    timer.Stop();
-                    pauseCtrl++;
+                timer.Stop();
+                pauseCtrl++;
 
-                    pauseButton.Text = "Resume";
-                    blockerPanel.Visible = true;
-                    boardPanel.Visible = false;
-                    groupBox3.Visible = false;
-                    groupBox4.Visible = false;
-                    groupBox5.Visible = false;
-                    groupBox6.Visible = false;
-                }
-                else
-                {
-                    timer.Start();
-                    pauseCtrl--;
-                    pauseButton.Text = "Pause";
-                    blockerPanel.Visible = false;
-                    boardPanel.Visible = true;
-                    groupBox3.Visible = true;
-                    groupBox4.Visible = true;
-                    groupBox5.Visible = true;
-                    groupBox6.Visible = true;
-
-                }
+                pauseButton.Text = "Resume";
+                blockerPanel.Visible = true;
             }
             else
             {
-                richtest.Clear();
-                richtest.AppendText("Please create a new puzzle. ");
+                timer.Start();
+                pauseCtrl--;
+                pauseButton.Text = "Pause";
+                blockerPanel.Visible = false;
             }
         }
 
@@ -1109,81 +1059,80 @@ namespace ParkSumSudoku
         }
 
 
-        private void resetButton_Click(object sender, EventArgs e)
+        private void cheatButton_Click(object sender, EventArgs e)
         {
-            if (gameStart2)
+            create_Solved_Board(gdim);
+            timer.Reset();
+            //timer.Start();
+            //visTimer.Start();
+            if (!(pauseCtrl % 2 == 0))
             {
-                fileExists = false;
-                gameStart = false;
-                resetFile = true;
-
-
-                foreach (Control ct in boardPanel.Controls.OfType<TextBox>())
-                {
-                    if (checkReadOnly(ct) == true)
-                    {
-
-                    }
-                    else
-                    {
-                        ct.Text = String.Empty;
-
-                        Update_Current_Sums(Int32.Parse(ct.Name), 0);
-
-                    }
-                }
-                currentSumList = new List<int>();
-                currentSumResults = new List<int>();
-                currentIDS = new List<string>();
-                SumResults = new List<int>();
-                currentSolvedList = new List<int>();
-
-                create_Board(gdim);
-                timer.Reset();
-                timer.Start();
-                visTimer.Start();
-
-                if (!(pauseCtrl % 2 == 0))
-                {
-                    timer.Start();
-                    pauseCtrl--;
-                    pauseButton.Text = "Pause";
-                    blockerPanel.Visible = false;
-                }
+                //timer.Start();
+                pauseCtrl--;
+                pauseButton.Text = "Pause";
+                blockerPanel.Visible = false;
+            }
+        }
+        private bool checkReadOnly(Control Ctrl)
+        {
+            bool isReadOnly = false;
+            if (((TextBox)Ctrl).ReadOnly == true)
+            {
+                isReadOnly = true;
             }
             else
             {
-                richtest.Clear();
-                richtest.AppendText("Please create a new puzzle. ");
+                isReadOnly = false;
+            }
+            return isReadOnly;
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            gameStart = false;
+         
+
+            foreach (Control ct in boardPanel.Controls.OfType<TextBox>())
+            {
+                if (checkReadOnly(ct) == true)
+                {
+                    
+                }
+                else
+                {
+                    ct.Text = String.Empty;
+
+                    Update_Current_Sums(Int32.Parse(ct.Name), 0);
+
+                }
+            }
+            currentSumList = new List<int>();
+            currentSumResults = new List<int>();
+            currentIDS = new List<string>();
+            SumResults = new List<int>();
+
+            create_Board(gdim);
+            timer.Reset();
+            timer.Start();
+            visTimer.Start();
+
+            if (!(pauseCtrl % 2 == 0))
+            {
+                timer.Start();
+                pauseCtrl--;
+                pauseButton.Text = "Pause";
+                blockerPanel.Visible = false;
             }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (gameStart2)
-            {//boardPanel.[i.ToString()].Text;
-                tbs = "";
-                for (int i = 0; i < (dev * dev); i++)
-                {
-                    if (boardPanel.Controls[i].Text != "")
-                    { tbs += boardPanel.Controls[i].Text; }
-                    else
-                    { tbs += "0"; }
+            //boardPanel.[i.ToString()].Text;
+            tbs = "";
+            for (int i = 0; i < (dev * dev); i++)
+                tbs += boardPanel.Controls[i.ToString()].Text;
 
-                }
-                System.IO.File.WriteAllText("Saved/" + difficultyChoice + levelChoice + ".txt", tbs);
-
-                timer.Stop();
-                MessageBox.Show("Puzzle progress saved.");
-                timer.Start();
-                richtest.AppendText("\nPuzzle progress saved.\n");
-
-            }
-            else
-            {
-                richtest.Clear();
-                richtest.AppendText("Please create a new puzzle. ");
-            }
+            System.IO.File.WriteAllText("Saved/" + difficultyChoice + levelChoice + ".txt", tbs);
         }
 
         private void visTimer_Tick(object sender, EventArgs e)
@@ -1192,22 +1141,11 @@ namespace ParkSumSudoku
             TimeSpan ts = timer.Elapsed;
 
             // Format and display the TimeSpan value.
-            string elapsedTime = String.Format("{0:#0}:{1:#0}.{2:00}",
-                ts.Minutes,
+            string elapsedTime = String.Format("{0:00}.{1:00}",
                 ts.Seconds,
                 ts.Milliseconds / 10);
 
             timerLabel.Text = elapsedTime.ToString();
-
-            if (ts.Seconds >= 30)
-            {
-                timerLabel.ForeColor = Color.Yellow;
-            }
-            else if (ts.Minutes >= 1)
-
-            {
-                timerLabel.ForeColor = Color.Red;
-            }
             /*
             double outtb = timer.ElapsedMilliseconds / 1000;
             timerLabel.Text = outtb.ToString() + " Seconds";
@@ -1215,41 +1153,71 @@ namespace ParkSumSudoku
         }
         private void IWon(char pick)
         {
-            blockerPanel.Visible = true;
-            WinPanel.Visible = true;
-            richtest.Clear();
-            List<string> myContents = new List<string>();
+   
             foreach (Speed a in currentSpeeds)
             {
-                if (!cheater)
+                if (a.pDiff == pick && a.plevel == ((choice+1)) && a.pSpeed > timer.ElapsedMilliseconds / 1000)
                 {
-                    if ((a.pDiff == pick) && (a.plevel == levelChoice) && (a.pSpeed > (timer.ElapsedMilliseconds / 1000)))
-                    {
-                        a.pSpeed = (int)timer.ElapsedMilliseconds / 1000;
-                        richtest.AppendText("NEW RECORD! \n");
-                    }
+                    a.pSpeed = (int)timer.ElapsedMilliseconds / 1000;
                 }
-                myContents.Add(a.pDiff + "-" + a.plevel + "-" + a.pSpeed);
             }
-
-            System.IO.File.WriteAllLines("Speed/speed.txt", myContents.ToArray());
-
             timer.Stop();
+            richtest.Clear();
             curBoard();
             TimeSpan ts = timer.Elapsed;
             // Format and display the TimeSpan value.
-            string elapsedTime = String.Format("{0:#0} minute(s) and {1:#0}.{2:00} seconds!",
-                ts.Minutes,
+            string elapsedTime = String.Format("{0:0}.{1:00}",
                 ts.Seconds,
                 ts.Milliseconds / 10);
-            richtest.AppendText("\nTime! Your time was " + elapsedTime.ToString());
-
-            MessageBox.Show("Great work!");
-            blockerPanel.Visible = false;
-            WinPanel.Visible = false;
-
+            richtest.AppendText("\nTime! Your time was " + elapsedTime.ToString() + " seconds!");
+            MessageBox.Show("YOU WIN.");
 
         }
+        private void checkButton_Click(object sender, EventArgs e)
+        {
+            char pick = ' ';
+            switch (choice)
+            {
+                case 0:
+                    pick = 'e';
+                    break;
+                case 1:
+                    pick = 'm';
+                    break;
+                case 2:
+                    pick = 'h';
+                    break;
+                default:
+                    pick = 'e';
+                    break;
+            }
+            tbs = "";
+            string solvedString = "";
+            for (int i = 0; i < (dev * dev); i++)
+                tbs += boardPanel.Controls[i.ToString()].Text;
+            foreach (Puzzle p in puzzles)
+            {
+                if (p.pDifficulty == difficultyChoice && p.pLevel == levelChoice)
+                {
+                    foreach (int i in p.pSolved)
+                    {
+                        solvedString += i.ToString();
+                    }
+                    if (tbs.Equals(solvedString))
+                    {
+                        System.Windows.Forms.MessageBox.Show("You have completed the puzzle");
+
+                        IWon(pick);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not quite correct, keep trying!");
+                    }
+                }
+            }
+
+        }
+
 
         private void boardPanel_Paint_1(object sender, PaintEventArgs e)
         {
@@ -1316,104 +1284,6 @@ namespace ParkSumSudoku
             }
         }
 
-        private void WinPanel_Paint(object sender, PaintEventArgs e)
-        {
-            int adjust = 2;
-            Pen myPen = new Pen(Color.DodgerBlue, 15);
-            e.Graphics.DrawLine(myPen, 0, 0, WinPanel.Width, 0);
-            e.Graphics.DrawLine(myPen, 0, WinPanel.Height - adjust, WinPanel.Width, WinPanel.Height - adjust);
-            e.Graphics.DrawLine(myPen, 0, 0, 0, WinPanel.Height);
-            e.Graphics.DrawLine(myPen, WinPanel.Width - adjust, 0, WinPanel.Width - adjust, WinPanel.Height);
-        }
-
-        private void solveButton_Click_1(object sender, EventArgs e)
-        {
-            if (gameStart2)
-            {
-                create_Solved_Board(gdim);
-                timer.Reset();
-                //timer.Start();
-                //visTimer.Start();
-                if (!(pauseCtrl % 2 == 0))
-                {
-                    //timer.Start();
-                    pauseCtrl--;
-                    pauseButton.Text = "Pause";
-                    blockerPanel.Visible = false;
-                }
-            }
-            else
-            {
-                richtest.Clear();
-                richtest.AppendText("Please create a new puzzle. ");
-            }
-        }
-        private bool checkReadOnly(Control Ctrl)
-        {
-            bool isReadOnly = false;
-            if (((TextBox)Ctrl).ReadOnly == true)
-            {
-                isReadOnly = true;
-            }
-            else
-            {
-                isReadOnly = false;
-            }
-            return isReadOnly;
-        }
-
-        private void hintButton_Click(object sender, EventArgs e)
-        {
-            if (gameStart2)
-            {
-                //currentSumList 
-                //currentSolvedList
-                bool foundWrong = false;
-                int tempI = 0;
-
-                /*
-                richtest.AppendText("\n");
-                foreach (int i in currentSumList)
-                {
-                    richtest.AppendText(currentSumList[i].ToString());
-                }
-
-                richtest.AppendText("\n");
-                foreach (int i in currentSolvedList)
-                {
-                    richtest.AppendText(currentSolvedList[i].ToString());
-                }
-                */
-
-                for (int i = 0; i < currentSolvedList.Count(); i++)
-                {
-                    // richtest.AppendText(currentSumList[i].ToString() + " " + currentSolvedList[i].ToString());
-                    if (!foundWrong)
-                    {
-                        if (currentSumList[i] != currentSolvedList[i])
-                        {
-                            currentSumList[i] = currentSolvedList[i];
-                            tempI = i;
-                            foundWrong = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (foundWrong)
-                {
-
-                    boardPanel.Controls[tempI].Text = currentSumList[tempI].ToString();
-                }
-
-            }
-            else
-            {
-                richtest.Clear();
-                richtest.AppendText("Please create a new puzzle. ");
-            }
-        }
-
         private void curBoard()
         {
             char pick = 'e';
@@ -1433,6 +1303,7 @@ namespace ParkSumSudoku
                     pick = 'e';
                     break;
             }
+            richtest.Clear();
             richtest.AppendText("LEADERBOARD \n");
             foreach (Speed a in currentSpeeds)
             {
@@ -1449,13 +1320,10 @@ namespace ParkSumSudoku
 
         private void diffButton_Click(object sender, EventArgs e)
         {
-            gameStart2 = true;
-            fileExists = false;
+
             gameStart = false;
-            resetFile = false;
             choice = diffselectCombo.SelectedIndex;
             levelChoice = levelselectCombo.SelectedIndex + 1;
-            richtest.Clear();
        
             foreach (Control ct in boardPanel.Controls.OfType<TextBox>())
             {
@@ -1472,7 +1340,6 @@ namespace ParkSumSudoku
             currentSumResults = new List<int>();
             currentIDS = new List<string>();
             SumResults = new List<int>();
-            currentSolvedList = new List<int>();
 
 
             if (!(pauseCtrl % 2 == 0))
